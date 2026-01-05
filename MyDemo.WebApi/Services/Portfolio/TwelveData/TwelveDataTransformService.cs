@@ -14,7 +14,7 @@ public class TwelveDataTransformService
             return new StockDto(
                 info: $"{item.symbol} - {item.name}",
                 currency: item.currency,
-                value: ParseString(item.open),
+                value: ParseString(item.close),
                 date: item.datetime
             );
         });
