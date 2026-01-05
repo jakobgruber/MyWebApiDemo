@@ -1,4 +1,5 @@
 using MyDemo.DataContext;
+using MyDemo.WebApi.Auth;
 using MyDemo.WebApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
+builder.Services.AddJwtAuthentication(builder.Configuration);
 builder.Services.AddMyDemoDataContext();
 builder.Services.AddServices();
 

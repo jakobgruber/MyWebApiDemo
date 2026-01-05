@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyDemo.DataContext;
 using MyDemo.WebApi.Models;
 using MyDemo.WebApi.Services.Portfolio;
 
 namespace MyDemo.WebApi.Controllers;
 
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class DashboardController : ControllerBase

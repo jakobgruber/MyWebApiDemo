@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyDemo.DataContext;
+using MyDemo.WebApi.Constants;
 
 namespace MyDemo.WebApi.Controllers;
 
+[Authorize(Roles = Roles.Admin)]
 [Route("api/settings")]
 [ApiController]
 public class AdminSettingsController : ControllerBase
