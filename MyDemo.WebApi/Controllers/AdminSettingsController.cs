@@ -8,10 +8,12 @@ namespace MyDemo.WebApi.Controllers;
 public class AdminSettingsController : ControllerBase
 {
     private readonly IAdminRepository _repository;
+    private readonly ILogger<AdminSettingsController> _logger;
 
-    public AdminSettingsController(IAdminRepository repository)
+    public AdminSettingsController(IAdminRepository repository, ILogger<AdminSettingsController> logger)
     {
-        _repository = repository; 
+        _repository = repository;
+        _logger = logger;
     }
 
     [HttpGet()]
@@ -29,10 +31,12 @@ public class AdminSettingsController : ControllerBase
     {
         if (adminSettings is null || adminSettings.stockSymbols?.Any() == false)
         {
+            _logger.LogError("UpdateAdminSettings failed - invalid data");
             return BadRequest();
         }
 
         _repository.SetStockSymbols(adminSettings.stockSymbols!);
+        _logger.LogInformation("AdminSettings updated");
         return Ok();
     }
 }

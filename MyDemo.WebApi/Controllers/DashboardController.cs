@@ -11,11 +11,13 @@ public class DashboardController : ControllerBase
 {
     IPortfolioRequestService _portfolioRequestService;
     IAdminRepository _adminRepository;
+    private readonly ILogger<DashboardController> _logger;
 
-    public DashboardController(IPortfolioRequestService portfolioRequestService,  IAdminRepository adminRepository)
+    public DashboardController(IPortfolioRequestService portfolioRequestService,  IAdminRepository adminRepository, ILogger<DashboardController> logger)
     {
         _portfolioRequestService = portfolioRequestService;
         _adminRepository = adminRepository;
+        _logger = logger;
     }
 
     [HttpGet]
@@ -26,6 +28,7 @@ public class DashboardController : ControllerBase
         var settings = _adminRepository.GetSettings();
         if (settings is null)
         {
+            _logger.LogError("Loading data for dashboard failed - no admin settings");
             return NotFound(new { Message = "Can not load data for dashboard, admin settings are not configured."});
         }
         
