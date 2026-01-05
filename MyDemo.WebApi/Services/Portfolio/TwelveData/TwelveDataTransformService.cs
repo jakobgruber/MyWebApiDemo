@@ -11,13 +11,20 @@ public class TwelveDataTransformService
 
         var stockDtos = items.Select(item =>
         {
+            if (item is null || ParseString(item.close) == 0)
+            {
+                return null;
+            }
+
             return new StockDto(
                 info: $"{item.symbol} - {item.name}",
                 currency: item.currency,
                 value: ParseString(item.close),
                 date: item.datetime
             );
-        });
+        })
+        .Where(item => item is not null)
+        .ToList();
 
         return new PortfolioDto(stockDtos);
     }
