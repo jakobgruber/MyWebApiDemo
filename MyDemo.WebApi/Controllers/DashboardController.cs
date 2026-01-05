@@ -19,12 +19,14 @@ public class DashboardController : ControllerBase
     }
 
     [HttpGet]
+    [ProducesResponseType(200, Type = typeof(DashboardDto))]
+    [ProducesResponseType(404)]
     public async Task<IActionResult> GetDashboardData()
     {
         var settings = _adminRepository.GetSettings();
         if (settings is null)
         {
-            return NotFound();
+            return NotFound(new { Message = "Can not load data for dashboard, admin settings are not configured."});
         }
         
         var portfolioDto = await _portfolioRequestService.GetCurrentPortfolio(settings.StockSymbols);
