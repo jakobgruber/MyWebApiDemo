@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.1.11312.151 d18.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDemo.WebApi", "MyDemo.WebApi\MyDemo.WebApi.csproj", "{815F4CEE-162A-4540-BD87-28C7E30D0E9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDemo.DataContext", "MyDemo.DataContext\MyDemo.DataContext.csproj", "{4469DE83-1189-4D2D-95CB-072605F8BC81}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{815F4CEE-162A-4540-BD87-28C7E30D0E9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{815F4CEE-162A-4540-BD87-28C7E30D0E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{815F4CEE-162A-4540-BD87-28C7E30D0E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{815F4CEE-162A-4540-BD87-28C7E30D0E9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4469DE83-1189-4D2D-95CB-072605F8BC81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4469DE83-1189-4D2D-95CB-072605F8BC81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4469DE83-1189-4D2D-95CB-072605F8BC81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4469DE83-1189-4D2D-95CB-072605F8BC81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF11B761-53E0-490D-A38D-82E63DE407D5}
+	EndGlobalSection
+EndGlobal
