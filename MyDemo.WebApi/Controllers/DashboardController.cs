@@ -29,7 +29,7 @@ public class DashboardController : ControllerBase
             return NotFound(new { Message = "Can not load data for dashboard, admin settings are not configured."});
         }
         
-        var portfolioDto = await _portfolioRequestService.GetCurrentPortfolio(settings.StockSymbols);
+        var portfolioDto = await _portfolioRequestService.GetCurrentPortfolio(settings.stockSymbols);
 
         return Ok(new DashboardDto(portfolioDto));
     }
