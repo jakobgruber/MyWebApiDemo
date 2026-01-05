@@ -6,7 +6,9 @@ public static class AddAdminRepositoryExtension
 {
     public static IServiceCollection AddMyDemoDataContext(this IServiceCollection services)
     {
-        services.AddScoped<IAdminRepository, AdminRepository>();
+        // current AdminRepository stores data in memory, so we have to use AddSingleton otherwise the update methods will not work
+        // when using a real database, change scope!!!
+        services.AddSingleton<IAdminRepository, AdminRepository>();
         return services;
     }
 }
