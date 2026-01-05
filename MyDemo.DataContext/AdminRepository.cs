@@ -2,25 +2,21 @@
 
 public interface IAdminRepository
 {
-    public AdminSettings GetSettings();
-    public void SetStockSymbols(String symbols);
+    public AdminSettingsDto GetSettings();
+    public void SetStockSymbols(IEnumerable<String> stockSymbols);
 }
 
 internal class AdminRepository : IAdminRepository
 {
     private IEnumerable<String> _stockSymbols = ["TSLA" ,"AAPL" ,"GOOG"];
 
-    public AdminSettings GetSettings()
+    public AdminSettingsDto GetSettings()
     {
         return new(_stockSymbols);
     }
 
-    public void SetStockSymbols(String symbols)
+    public void SetStockSymbols(IEnumerable<String> stockSymbols)
     {
-        _stockSymbols = symbols
-            .Split(',', StringSplitOptions.RemoveEmptyEntries)
-            .Select(s => s.Trim())
-            .Where(s => !string.IsNullOrEmpty(s))
-            .ToList();
+        _stockSymbols = stockSymbols.Where(s => s is not null).ToList();
     }
 }
