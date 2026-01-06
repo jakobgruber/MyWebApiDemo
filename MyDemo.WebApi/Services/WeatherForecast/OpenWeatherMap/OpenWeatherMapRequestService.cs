@@ -1,6 +1,5 @@
 ﻿using MyDemo.Domain;
 using MyDemo.WebApi.Contracts;
-using MyDemo.WebApi.Controllers;
 
 namespace MyDemo.WebApi.Services.WeatherForecast.OpenWeatherMap;
 

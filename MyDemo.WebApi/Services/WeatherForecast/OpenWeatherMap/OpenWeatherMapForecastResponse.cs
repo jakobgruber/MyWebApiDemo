@@ -1,7 +1,7 @@
-﻿namespace MyDemo.WebApi.Services.WeatherForecast.OpenWeatherMap;
-
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+
+namespace MyDemo.WebApi.Services.WeatherForecast.OpenWeatherMap;
 
 public class OpenWeatherMapWeatherForecastResponse
 {
