@@ -9,8 +9,8 @@ public class ParseUtils
             : 0m;
     }
 
-    public static decimal ConvertFahrenheitToCelsius(decimal fahrenheit)
+    public static decimal ConvertKelvinToCelsius(decimal kelvin)
     {
-        return (fahrenheit - 32m) * 5m / 9m;
+        return kelvin - 273.15m;
     }
 }
