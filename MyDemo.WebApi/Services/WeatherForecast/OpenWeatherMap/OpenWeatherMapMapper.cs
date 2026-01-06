@@ -1,4 +1,5 @@
 ﻿using MyDemo.WebApi.Contracts;
+using MyDemo.WebApi.Utils;
 
 namespace MyDemo.WebApi.Services.WeatherForecast.OpenWeatherMap;
 
@@ -7,14 +8,11 @@ public class OpenWeatherMapMapper
     public static WeatherForecastResponse ToWeatherForecastResponse(OpenWeatherMapWeatherForecastResponse response)
     {
         ArgumentNullException.ThrowIfNull(response);
+        var tempInCelsius = ParseUtils.ConvertFahrenheitToCelsius(response.Main.Temp);
+        var feelsLikeInCelsius = ParseUtils.ConvertFahrenheitToCelsius(response.Main.FeelsLike);
 
         return new(
-            response.Name, FahrenheitToCelsius(response.Main.Temp), response.Main.FeelsLike
+            response.Name, tempInCelsius, feelsLikeInCelsius
         );
-    }
-
-    private static decimal FahrenheitToCelsius(decimal fahrenheit)
-    {
-        return (fahrenheit - 32m) * 5m / 9m;
     }
 }
