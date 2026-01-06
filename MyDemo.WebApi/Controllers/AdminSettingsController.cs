@@ -35,7 +35,7 @@ public class AdminSettingsController : ControllerBase
     [ProducesResponseType(400)]
     [ProducesResponseType(401)]
     [ProducesResponseType(403)]
-    public ActionResult UpdateStockSymbols([FromBody] IEnumerable<String> stockSymbols)
+    public ActionResult UpdateStockSymbols([FromBody] IEnumerable<string> stockSymbols)
     {
         if (stockSymbols?.Any() == false)
         {

@@ -2,4 +2,4 @@
 
 namespace MyDemo.DataContext;
 
-public record AdminSettings(IEnumerable<String> stockSymbols, WeatherLocation locationForWeatherForecast);
+public record AdminSettings(IEnumerable<string> stockSymbols, WeatherLocation locationForWeatherForecast);

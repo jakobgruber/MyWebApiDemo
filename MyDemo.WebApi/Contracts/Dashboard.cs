@@ -10,6 +10,12 @@ public record PortfolioResponse
     IEnumerable<StockResponse> stocks
 );
 
-public record StockResponse(
-    String info, String currency, Decimal value, String date
+public record StockResponse
+(
+    string info, string currency, decimal value, string date
+);
+
+public record WeatherForecastResponse
+(
+    string nameOfLocation, decimal temperatureInCelsius, decimal feelsLikeInCelsius
 );

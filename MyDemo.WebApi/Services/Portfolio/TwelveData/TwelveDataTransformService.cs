@@ -29,7 +29,7 @@ public class TwelveDataTransformService
         return new PortfolioResponse(stockDtos);
     }
 
-    private static Decimal ParseString(String value)
+    private static decimal ParseString(string value)
     {
         return decimal.TryParse(value, System.Globalization.CultureInfo.InvariantCulture, out var parsed)
             ? parsed

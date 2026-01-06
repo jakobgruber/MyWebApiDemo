@@ -2,5 +2,5 @@
 
 public record TwelveDataStockInfoResponse
 (
-    String symbol, String name, String currency, String close, String datetime
+    string symbol, string name, string currency, string close, string datetime
 );

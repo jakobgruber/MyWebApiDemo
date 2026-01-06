@@ -6,7 +6,7 @@ namespace MyDemo.WebApi.Services.Portfolio;
 public class TwelveDataRequestService: IPortfolioRequestService
 {
     private readonly HttpClient _httpClient;
-    private readonly String _apiKey;
+    private readonly string _apiKey;
 
     public TwelveDataRequestService(IHttpClientFactory httpClientFactory, IConfiguration configuration)
     {
@@ -16,7 +16,7 @@ public class TwelveDataRequestService: IPortfolioRequestService
         _apiKey = configuration["TwelveData:ApiKey"] ?? throw new Exception("missing api key - Twelve Data");
     }
 
-    public async Task<PortfolioResponse> GetCurrentPortfolio(IEnumerable<String> symbols)
+    public async Task<PortfolioResponse> GetCurrentPortfolio(IEnumerable<string> symbols)
     {
         ArgumentNullException.ThrowIfNull(symbols);
 
