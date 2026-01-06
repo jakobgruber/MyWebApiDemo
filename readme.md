@@ -6,7 +6,7 @@ Simple demo for ASP.NET Core / WebAPI.
 
 Provides data for stock and weather forecast from third party APIs. Admin user can update the settings to change stock list or location for weather forecast.
 
-## Import info
+## Important info
 
 ### API Keys
 Get your own API Keys:
