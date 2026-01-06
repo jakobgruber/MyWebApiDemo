@@ -1,9 +1,9 @@
-#MyWebApiDemo
+# MyWebApiDemo
 
 Simple demo for ASP.NET Core / WebAPI. 
 
 ## Features
-### Dashboard
+
 Provides data for stock and weather forecast from third party APIs. Admin user can update the settings to change stock list or location for weather forecast.
 
 ## Import info
