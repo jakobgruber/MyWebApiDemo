@@ -27,19 +27,19 @@ public class AdminSettingsController : ControllerBase
         return _repository.GetSettings();
     }
 
-    [HttpPut()]
+    [HttpPut("stock")]
     [ProducesResponseType(200)]
     [ProducesResponseType(400)]
-    public ActionResult UpdateAdminSettings([FromBody]AdminSettings adminSettings)
+    public ActionResult UpdateStockSymbols([FromBody] IEnumerable<String> stockSymbols)
     {
-        if (adminSettings is null || adminSettings.stockSymbols?.Any() == false)
+        if (stockSymbols?.Any() == false)
         {
-            _logger.LogError("UpdateAdminSettings failed - invalid data");
+            _logger.LogError("UpdateStockSymbols failed - invalid data");
             return BadRequest();
         }
 
-        _repository.SetStockSymbols(adminSettings.stockSymbols!);
-        _logger.LogInformation("AdminSettings updated");
+        _repository.UpdateStockSymbols(stockSymbols!);
+        _logger.LogInformation("StockSymbols updated");
         return Ok();
     }
 }

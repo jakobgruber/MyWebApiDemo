@@ -3,7 +3,7 @@
 public interface IAdminRepository
 {
     public AdminSettings GetSettings();
-    public void SetStockSymbols(IEnumerable<String> stockSymbols);
+    public void UpdateStockSymbols(IEnumerable<String> stockSymbols);
 }
 
 internal class AdminRepository : IAdminRepository
@@ -15,7 +15,7 @@ internal class AdminRepository : IAdminRepository
         return new(_stockSymbols);
     }
 
-    public void SetStockSymbols(IEnumerable<String> stockSymbols)
+    public void UpdateStockSymbols(IEnumerable<String> stockSymbols)
     {
         _stockSymbols = stockSymbols.Where(s => s is not null).ToList();
     }
