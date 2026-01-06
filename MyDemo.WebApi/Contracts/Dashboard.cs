@@ -2,7 +2,7 @@
 
 public record DashboardResponse
 (
-    PortfolioResponse portfolio
+    PortfolioResponse portfolio, WeatherForecastResponse weatherForecast
 );
 
 public record PortfolioResponse

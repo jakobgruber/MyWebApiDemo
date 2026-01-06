@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MyDemo.WebApi.Services.Portfolio;
+using MyDemo.WebApi.Services.WeatherForecast;
+using MyDemo.WebApi.Services.WeatherForecast.OpenWeatherMap;
 
 namespace MyDemo.WebApi.Services;
 
@@ -9,6 +11,7 @@ public static class AddServiceExtension
     {
         services.AddHttpClient();
         services.AddScoped<IPortfolioRequestService, TwelveDataRequestService>();
+        services.AddScoped<IWeatherForecastRequestService, OpenWeatherMapRequestService>();
         return services;
     }
 }

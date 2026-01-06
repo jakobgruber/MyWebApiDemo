@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyDemo.DataContext;
 using MyDemo.WebApi.Contracts;
 using MyDemo.WebApi.Services.Portfolio;
+using MyDemo.WebApi.Services.WeatherForecast;
 
 namespace MyDemo.WebApi.Controllers;
 
@@ -11,13 +12,20 @@ namespace MyDemo.WebApi.Controllers;
 [ApiController]
 public class DashboardController : ControllerBase
 {
-    IPortfolioRequestService _portfolioRequestService;
-    IAdminRepository _adminRepository;
+    private readonly IPortfolioRequestService _portfolioRequestService;
+    private readonly IWeatherForecastRequestService _weatherForeccastRequestService;
+    private readonly IAdminRepository _adminRepository;
     private readonly ILogger<DashboardController> _logger;
 
-    public DashboardController(IPortfolioRequestService portfolioRequestService,  IAdminRepository adminRepository, ILogger<DashboardController> logger)
+    public DashboardController(
+        IPortfolioRequestService portfolioRequestService,
+        IWeatherForecastRequestService weatherForeccastRequestService,
+        IAdminRepository adminRepository, 
+        ILogger<DashboardController> logger
+    )
     {
         _portfolioRequestService = portfolioRequestService;
+        _weatherForeccastRequestService = weatherForeccastRequestService;
         _adminRepository = adminRepository;
         _logger = logger;
     }
@@ -35,8 +43,9 @@ public class DashboardController : ControllerBase
             return NotFound(new { Message = "Can not load data for dashboard, admin settings are not configured."});
         }
         
-        var portfolioDto = await _portfolioRequestService.GetCurrentPortfolio(settings.stockSymbols);
+        var portfolioData = await _portfolioRequestService.GetCurrentPortfolio(settings.stockSymbols);
+        var weatherForecastData = await _weatherForeccastRequestService.GetWeatherForecastFor(settings.locationForWeatherForecast);
 
-        return Ok(new DashboardResponse(portfolioDto));
+        return Ok(new DashboardResponse(portfolioData, weatherForecastData));
     }
 }
