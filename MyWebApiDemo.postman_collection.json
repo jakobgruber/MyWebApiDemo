@@ -1,0 +1,446 @@
+{
+	"info": {
+		"_postman_id": "ab1cccf2-3e32-460d-81ff-15dd280e63b6",
+		"name": "MyWebApiDemo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50192103",
+		"_collection_link": "https://jakobgruber-983076.postman.co/workspace/Pizza's-Workspace~23de0095-f09e-4a7b-8e3e-a41994b9231d/collection/50192103-ab1cccf2-3e32-460d-81ff-15dd280e63b6?action=share&source=collection_link&creator=50192103"
+	},
+	"item": [
+		{
+			"name": "open weather map",
+			"item": [
+				{
+					"name": "geocoding",
+					"item": [
+						{
+							"name": "get by post code",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://api.openweathermap.org/geo/1.0/zip?zip=1160,AT&appid={{weatherApiKey}}",
+									"protocol": "http",
+									"host": [
+										"api",
+										"openweathermap",
+										"org"
+									],
+									"path": [
+										"geo",
+										"1.0",
+										"zip"
+									],
+									"query": [
+										{
+											"key": "zip",
+											"value": "1160,AT"
+										},
+										{
+											"key": "appid",
+											"value": "{{weatherApiKey}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "forecast",
+					"item": [
+						{
+							"name": "weather",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.openweathermap.org/data/2.5/weather?lat=48.2167&lon=16.3&appid={{weatherApiKey}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"openweathermap",
+										"org"
+									],
+									"path": [
+										"data",
+										"2.5",
+										"weather"
+									],
+									"query": [
+										{
+											"key": "lat",
+											"value": "48.2167"
+										},
+										{
+											"key": "lon",
+											"value": "16.3"
+										},
+										{
+											"key": "appid",
+											"value": "{{weatherApiKey}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "twelve data",
+			"item": [
+				{
+					"name": "get stock list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.twelvedata.com/quote?symbol=TSLA,AAPL&apikey={{twelveDataApiKey}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"twelvedata",
+								"com"
+							],
+							"path": [
+								"quote"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "TSLA,AAPL"
+								},
+								{
+									"key": "apikey",
+									"value": "{{twelveDataApiKey}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "demo",
+			"item": [
+				{
+					"name": "admin",
+					"item": [
+						{
+							"name": "admin settings",
+							"item": [
+								{
+									"name": "success",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{MyWebApiDemo.Admin}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/settings",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"settings"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "update stock symbols",
+							"item": [
+								{
+									"name": "success",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{MyWebApiDemo.Admin}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "[\r\n    \"TSLA\",\r\n    \"AAPL\",\r\n    \"MSFT\"\r\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/settings/stock",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"settings",
+												"stock"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "fail invalid data",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{MyWebApiDemo.Admin}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "[]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/settings/stock",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"settings",
+												"stock"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "update weather",
+							"item": [
+								{
+									"name": "success",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{MyWebApiDemo.Admin}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"latitude\": 7.367,\r\n    \"longitude\": 45.133\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/settings/weather",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"settings",
+												"weather"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "dashboard",
+					"item": [
+						{
+							"name": "success",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{MyWebApiDemo.User}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/dashboard",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"dashboard"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "login - fail",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"nope\",\r\n    \"password\": \"nope\",\r\n    \"claim\": \"Admin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login - user",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"demo\",\r\n    \"password\": \"Pa$$w0rd\",\r\n    \"claim\": \"User\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login - admin",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"demo\",\r\n    \"password\": \"Pa$$w0rd\",\r\n    \"claim\": \"Admin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
