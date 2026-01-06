@@ -43,9 +43,11 @@ public class DashboardController : ControllerBase
             return NotFound(new { Message = "Can not load data for dashboard, admin settings are not configured."});
         }
         
-        var portfolioData = await _portfolioRequestService.GetCurrentPortfolio(settings.StockSymbols);
-        var weatherForecastData = await _weatherForeccastRequestService.GetWeatherForecastFor(settings.LocationForWeatherForecast);
+        var portfolioTask = _portfolioRequestService.GetCurrentPortfolio(settings.StockSymbols);
+        var weatherForecastTask = _weatherForeccastRequestService.GetWeatherForecastFor(settings.LocationForWeatherForecast);
 
-        return Ok(new DashboardResponse(portfolioData, weatherForecastData));
+        await Task.WhenAll(portfolioTask, weatherForecastTask);
+
+        return Ok(new DashboardResponse(portfolioTask.Result, weatherForecastTask.Result));
     }
 }
