@@ -5,7 +5,7 @@ namespace MyDemo.WebApi.Services.Portfolio;
 
 public class TwelveDataTransformService
 {
-    public PortfolioDto ToPortfolioDto(IEnumerable<TwelveDataStockInfoResponse> items)
+    public static PortfolioDto ToPortfolioDto(IEnumerable<TwelveDataStockInfoResponse> items)
     {
         ArgumentNullException.ThrowIfNull(items);
 
@@ -29,7 +29,7 @@ public class TwelveDataTransformService
         return new PortfolioDto(stockDtos);
     }
 
-    private Decimal ParseString(String value)
+    private static Decimal ParseString(String value)
     {
         return decimal.TryParse(value, System.Globalization.CultureInfo.InvariantCulture, out var parsed)
             ? parsed
