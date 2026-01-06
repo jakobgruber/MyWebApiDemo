@@ -24,6 +24,7 @@ public class DashboardController : ControllerBase
 
     [HttpGet]
     [ProducesResponseType(200, Type = typeof(DashboardResponse))]
+    [ProducesResponseType(401)]
     [ProducesResponseType(404)]
     public async Task<IActionResult> GetDashboardData()
     {

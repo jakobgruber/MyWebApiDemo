@@ -20,8 +20,9 @@ public class AdminSettingsController : ControllerBase
     }
 
     [HttpGet()]
-
     [ProducesResponseType(200, Type = typeof(AdminSettings))]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(403)]
     public AdminSettings GetStockSymbols()
     {
         return _repository.GetSettings();
@@ -30,6 +31,8 @@ public class AdminSettingsController : ControllerBase
     [HttpPut("stock")]
     [ProducesResponseType(200)]
     [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(403)]
     public ActionResult UpdateStockSymbols([FromBody] IEnumerable<String> stockSymbols)
     {
         if (stockSymbols?.Any() == false)
