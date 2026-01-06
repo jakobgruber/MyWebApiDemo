@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using MyDemo.WebApi.Models;
+using MyDemo.WebApi.Contracts;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -19,7 +19,7 @@ namespace SecureDemoApi.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginDto model)
+        public IActionResult Login([FromBody] LoginRequest model)
         {
             // super unsecure credentials validations - just a demo
             if (model.Username != "demo" || model.Password != "Pa$$w0rd")

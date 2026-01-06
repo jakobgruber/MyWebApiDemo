@@ -1,4 +1,4 @@
-﻿using MyDemo.WebApi.Models;
+﻿using MyDemo.WebApi.Contracts;
 using MyDemo.WebApi.Services.Portfolio.TwelveData;
 
 namespace MyDemo.WebApi.Services.Portfolio;
@@ -16,7 +16,7 @@ public class TwelveDataRequestService: IPortfolioRequestService
         _apiKey = configuration["TwelveData:ApiKey"] ?? throw new Exception("missing api key - Twelve Data");
     }
 
-    public async Task<PortfolioDto> GetCurrentPortfolio(IEnumerable<String> symbols)
+    public async Task<PortfolioResponse> GetCurrentPortfolio(IEnumerable<String> symbols)
     {
         ArgumentNullException.ThrowIfNull(symbols);
 

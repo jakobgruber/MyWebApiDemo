@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyDemo.DataContext;
-using MyDemo.WebApi.Models;
+using MyDemo.WebApi.Contracts;
 using MyDemo.WebApi.Services.Portfolio;
 
 namespace MyDemo.WebApi.Controllers;
@@ -23,7 +23,7 @@ public class DashboardController : ControllerBase
     }
 
     [HttpGet]
-    [ProducesResponseType(200, Type = typeof(DashboardDto))]
+    [ProducesResponseType(200, Type = typeof(DashboardResponse))]
     [ProducesResponseType(404)]
     public async Task<IActionResult> GetDashboardData()
     {
@@ -36,6 +36,6 @@ public class DashboardController : ControllerBase
         
         var portfolioDto = await _portfolioRequestService.GetCurrentPortfolio(settings.stockSymbols);
 
-        return Ok(new DashboardDto(portfolioDto));
+        return Ok(new DashboardResponse(portfolioDto));
     }
 }

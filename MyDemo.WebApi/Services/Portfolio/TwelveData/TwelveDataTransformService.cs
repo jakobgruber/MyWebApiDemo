@@ -1,11 +1,11 @@
-﻿using MyDemo.WebApi.Models;
+﻿using MyDemo.WebApi.Contracts;
 using MyDemo.WebApi.Services.Portfolio.TwelveData;
 
 namespace MyDemo.WebApi.Services.Portfolio;
 
 public class TwelveDataTransformService
 {
-    public static PortfolioDto ToPortfolioDto(IEnumerable<TwelveDataStockInfoResponse> items)
+    public static PortfolioResponse ToPortfolioDto(IEnumerable<TwelveDataStockInfoResponse> items)
     {
         ArgumentNullException.ThrowIfNull(items);
 
@@ -16,7 +16,7 @@ public class TwelveDataTransformService
                 return null;
             }
 
-            return new StockDto(
+            return new StockResponse(
                 info: $"{item.symbol} - {item.name}",
                 currency: item.currency,
                 value: ParseString(item.close),
@@ -26,7 +26,7 @@ public class TwelveDataTransformService
         .Where(item => item is not null)
         .ToList();
 
-        return new PortfolioDto(stockDtos);
+        return new PortfolioResponse(stockDtos);
     }
 
     private static Decimal ParseString(String value)
