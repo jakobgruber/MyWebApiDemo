@@ -7,13 +7,20 @@ public class TwelveDataRequestService: IPortfolioRequestService
 {
     private readonly HttpClient _httpClient;
     private readonly string _apiKey;
+    private readonly ILogger<TwelveDataRequestService> _logger;
 
-    public TwelveDataRequestService(IHttpClientFactory httpClientFactory, IConfiguration configuration)
+    public TwelveDataRequestService(
+        IHttpClientFactory httpClientFactory,
+        IConfiguration configuration,
+        ILogger<TwelveDataRequestService> logger
+    )
     {
         _httpClient = httpClientFactory.CreateClient();
-        var baseUrl = configuration["TwelveData:BaseUrl"] ?? throw new Exception("missing base url - Twelve Data");
+        var baseUrl = configuration["TwelveData:BaseUrl"] ?? throw new Exception("missing base url - TwelveData");
         _httpClient.BaseAddress = new Uri(baseUrl);
-        _apiKey = configuration["TwelveData:ApiKey"] ?? throw new Exception("missing api key - Twelve Data");
+        _apiKey = configuration["TwelveData:ApiKey"] ?? throw new Exception("missing api key - TwelveData");
+
+        _logger = logger;
     }
 
     public async Task<PortfolioResponse> GetCurrentPortfolio(IEnumerable<string> symbols)
@@ -24,7 +31,11 @@ public class TwelveDataRequestService: IPortfolioRequestService
         {
             // instead of multiple requests you can use the bulk quote endpoint,
             // but I wanted to try out parsing of multiple requests
-            return await _httpClient.GetFromJsonAsync<TwelveDataStockInfoResponse>($"quote?symbol={symbol}&apikey={_apiKey}");
+
+            var url = $"quote?symbol={symbol}&apikey={_apiKey}";
+            _logger.LogInformation($"Requesting: {_httpClient.BaseAddress}{url}");
+
+            return await _httpClient.GetFromJsonAsync<TwelveDataStockInfoResponse>(url);
         });
 
         var items = (await Task.WhenAll(tasks))
