@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyDemo.DataContext;
+using MyDemo.Domain;
 using MyDemo.WebApi.Constants;
+using MyDemo.WebApi.Contracts;
 
 namespace MyDemo.WebApi.Controllers;
 
@@ -43,6 +45,19 @@ public class AdminSettingsController : ControllerBase
 
         _repository.UpdateStockSymbols(stockSymbols!);
         _logger.LogInformation("StockSymbols updated");
+        return Ok();
+    }
+
+    [HttpPut("weather")]
+    [ProducesResponseType(200)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(403)]
+    public ActionResult UpdateLocationForWeatherForecast([FromBody] UpdateWeatherLocationRequest location)
+    {
+        WeatherLocation newLocation = new(location.Latitude, location.Longitude);
+        _repository.UpdateLocationForWeatherForecast(newLocation);
+        _logger.LogInformation("WeatherForecast updated");
         return Ok();
     }
 }
