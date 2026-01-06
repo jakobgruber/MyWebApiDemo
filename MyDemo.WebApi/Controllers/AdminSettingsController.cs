@@ -21,8 +21,8 @@ public class AdminSettingsController : ControllerBase
 
     [HttpGet()]
 
-    [ProducesResponseType(200, Type = typeof(AdminSettingsDto))]
-    public AdminSettingsDto GetStockSymbols()
+    [ProducesResponseType(200, Type = typeof(AdminSettings))]
+    public AdminSettings GetStockSymbols()
     {
         return _repository.GetSettings();
     }
@@ -30,7 +30,7 @@ public class AdminSettingsController : ControllerBase
     [HttpPut()]
     [ProducesResponseType(200)]
     [ProducesResponseType(400)]
-    public ActionResult UpdateAdminSettings([FromBody]AdminSettingsDto adminSettings)
+    public ActionResult UpdateAdminSettings([FromBody]AdminSettings adminSettings)
     {
         if (adminSettings is null || adminSettings.stockSymbols?.Any() == false)
         {

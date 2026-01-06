@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyDemo.DataContext\MyDemo.DataContext.csproj" />
+    <ProjectReference Include="..\MyDemo.Domain\MyDemo.Domain.csproj" />
   </ItemGroup>
 
 </Project>

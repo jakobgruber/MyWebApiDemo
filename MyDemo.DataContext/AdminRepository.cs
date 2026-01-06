@@ -2,7 +2,7 @@
 
 public interface IAdminRepository
 {
-    public AdminSettingsDto GetSettings();
+    public AdminSettings GetSettings();
     public void SetStockSymbols(IEnumerable<String> stockSymbols);
 }
 
@@ -10,7 +10,7 @@ internal class AdminRepository : IAdminRepository
 {
     private IEnumerable<String> _stockSymbols = ["TSLA" ,"AAPL" ,"GOOG"];
 
-    public AdminSettingsDto GetSettings()
+    public AdminSettings GetSettings()
     {
         return new(_stockSymbols);
     }
