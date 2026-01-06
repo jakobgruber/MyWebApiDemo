@@ -17,10 +17,10 @@ public class TwelveDataMapper
             }
 
             return new StockResponse(
-                info: $"{item.symbol} - {item.name}",
-                currency: item.currency,
-                value: ParseString(item.close),
-                date: item.datetime
+                Info: $"{item.symbol} - {item.name}",
+                Currency: item.currency,
+                Value: ParseString(item.close),
+                Date: item.datetime
             );
         })
         .Where(item => item is not null)

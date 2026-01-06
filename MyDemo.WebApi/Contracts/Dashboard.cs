@@ -2,20 +2,20 @@
 
 public record DashboardResponse
 (
-    PortfolioResponse portfolio, WeatherForecastResponse weatherForecast
+    PortfolioResponse Portfolio, WeatherForecastResponse WeatherForecast
 );
 
 public record PortfolioResponse
 (
-    IEnumerable<StockResponse> stocks
+    IEnumerable<StockResponse> Stocks
 );
 
 public record StockResponse
 (
-    string info, string currency, decimal value, string date
+    string Info, string Currency, decimal Value, string Date
 );
 
 public record WeatherForecastResponse
 (
-    string nameOfLocation, decimal temperatureInCelsius, decimal feelsLikeInCelsius
+    string NameOfLocation, decimal TemperatureInCelsius, decimal FeelsLikeInCelsius
 );
