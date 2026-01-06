@@ -29,6 +29,6 @@ public class OpenWeatherMapRequestService : IWeatherForecastRequestService
         var response = await _httpClient.GetFromJsonAsync<OpenWeatherMapWeatherForecastResponse>(url);
 
         _logger.LogInformation($"Requesting: {_httpClient.BaseAddress}{url}");
-        return OpenWeatherMapTransformService.ToWeatherForecastResponse(response!);
+        return OpenWeatherMapMapper.ToWeatherForecastResponse(response!);
     }
 }

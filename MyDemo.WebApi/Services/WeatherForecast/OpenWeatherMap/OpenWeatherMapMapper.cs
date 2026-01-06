@@ -2,7 +2,7 @@
 
 namespace MyDemo.WebApi.Services.WeatherForecast.OpenWeatherMap;
 
-public class OpenWeatherMapTransformService
+public class OpenWeatherMapMapper
 {
     public static WeatherForecastResponse ToWeatherForecastResponse(OpenWeatherMapWeatherForecastResponse response)
     {

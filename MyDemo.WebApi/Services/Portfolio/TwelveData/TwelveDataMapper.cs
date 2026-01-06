@@ -3,7 +3,7 @@ using MyDemo.WebApi.Services.Portfolio.TwelveData;
 
 namespace MyDemo.WebApi.Services.Portfolio;
 
-public class TwelveDataTransformService
+public class TwelveDataMapper
 {
     public static PortfolioResponse ToPortfolioDto(IEnumerable<TwelveDataStockInfoResponse> items)
     {

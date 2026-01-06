@@ -42,6 +42,6 @@ public class TwelveDataRequestService: IPortfolioRequestService
             .Where(dto => dto is not null)
             .ToList();
 
-        return TwelveDataTransformService.ToPortfolioDto(items!);
+        return TwelveDataMapper.ToPortfolioDto(items!);
     }
 }
