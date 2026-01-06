@@ -27,7 +27,7 @@ public class TwelveDataRequestService: IPortfolioRequestService
     {
         ArgumentNullException.ThrowIfNull(symbols);
 
-        var tasks = symbols.Select(async symbol =>
+        var tasks = symbols.Select(symbol =>
         {
             // instead of multiple requests you can use the bulk quote endpoint,
             // but I wanted to try out parsing of multiple requests
@@ -35,8 +35,8 @@ public class TwelveDataRequestService: IPortfolioRequestService
             var url = $"quote?symbol={symbol}&apikey={_apiKey}";
             _logger.LogInformation($"Requesting: {_httpClient.BaseAddress}{url}");
 
-            return await _httpClient.GetFromJsonAsync<TwelveDataStockInfoResponse>(url);
-        });
+            return _httpClient.GetFromJsonAsync<TwelveDataStockInfoResponse>(url);
+        }).ToList();
 
         var items = (await Task.WhenAll(tasks))
             .Where(dto => dto is not null)
