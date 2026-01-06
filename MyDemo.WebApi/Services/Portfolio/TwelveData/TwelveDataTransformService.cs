@@ -26,7 +26,7 @@ public class TwelveDataTransformService
         .Where(item => item is not null)
         .ToList();
 
-        return new PortfolioResponse(stockDtos);
+        return new PortfolioResponse(stockDtos!);
     }
 
     private static decimal ParseString(string value)
