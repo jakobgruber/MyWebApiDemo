@@ -17,5 +17,5 @@ public record StockResponse
 
 public record WeatherForecastResponse
 (
-    string NameOfLocation, decimal TemperatureInCelsius, decimal FeelsLikeInCelsius
+    string NameOfLocation, decimal Temperature, decimal FeelsLike, string TemperatureUnit
 );

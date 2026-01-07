@@ -8,11 +8,11 @@ public class OpenWeatherMapMapper
     public static WeatherForecastResponse ToWeatherForecastResponse(OpenWeatherMapWeatherForecastResponse response)
     {
         ArgumentNullException.ThrowIfNull(response);
-        var tempInCelsius = ParseUtils.ConvertKelvinToCelsius(response.Main.Temp);
-        var feelsLikeInCelsius = ParseUtils.ConvertKelvinToCelsius(response.Main.FeelsLike);
+        var temp = ParseUtils.ConvertKelvinToCelsius(response.Main.Temp);
+        var feelsLike = ParseUtils.ConvertKelvinToCelsius(response.Main.FeelsLike);
 
         return new(
-            response.Name, tempInCelsius, feelsLikeInCelsius
+            response.Name, temp, feelsLike, "Celsius"
         );
     }
 }
