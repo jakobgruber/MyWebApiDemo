@@ -40,7 +40,7 @@ public class DashboardController : ControllerBase
         if (settings is null)
         {
             _logger.LogError("Loading data for dashboard failed - no admin settings");
-            return NotFound(new { Message = "Can not load data for dashboard, admin settings are not configured."});
+            return StatusCode(500, new { Message = "Can not load data for dashboard, admin settings are not configured."});
         }
         
         var portfolioTask = _portfolioRequestService.GetCurrentPortfolio(settings.StockSymbols);
