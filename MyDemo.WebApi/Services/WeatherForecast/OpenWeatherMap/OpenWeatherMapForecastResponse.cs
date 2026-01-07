@@ -5,11 +5,9 @@ namespace MyDemo.WebApi.Services.WeatherForecast.OpenWeatherMap;
 
 public class OpenWeatherMapWeatherForecastResponse
 {
-    [JsonPropertyName("name")]
     [Required]
     public string Name { get; set; } = string.Empty;
 
-    [JsonPropertyName("main")]
     [Required]
     public OpenWeatherMapMainInfo Main { get; set; } = new();
 }
@@ -17,7 +15,6 @@ public class OpenWeatherMapWeatherForecastResponse
 public class OpenWeatherMapMainInfo
 {
     // Temperature in Kelvin
-    [JsonPropertyName("temp")]
     [Required]
     public decimal Temp { get; set; }
 
