@@ -2,13 +2,6 @@
 
 namespace MyDemo.DataContext;
 
-public interface IAdminRepository
-{
-    public AdminSettings GetSettings();
-    public void UpdateStockSymbols(IEnumerable<string> stockSymbols);
-    public void UpdateLocationForWeatherForecast(WeatherLocation location);
-}
-
 internal class AdminRepository : IAdminRepository
 {
     private IEnumerable<string> _stockSymbols = ["TSLA" ,"AAPL" ,"GOOG"];
