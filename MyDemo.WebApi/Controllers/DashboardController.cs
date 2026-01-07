@@ -34,6 +34,7 @@ public class DashboardController : ControllerBase
     [ProducesResponseType(200, Type = typeof(DashboardResponse))]
     [ProducesResponseType(401)]
     [ProducesResponseType(404)]
+    [EndpointDescription("Retrieves weather forecast and stock data based on current admin settings")]
     public async Task<IActionResult> GetDashboardData()
     {
         var settings = _adminRepository.GetSettings();

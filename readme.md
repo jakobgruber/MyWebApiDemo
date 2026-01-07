@@ -28,3 +28,7 @@ import MyWebApiDemo.postman_collection.json
 Your Postman environment needs five variables: weatherApiKey, twelveDataApiKey, baseUrl, MyWebApiDemo.User, MyWebApiDemo.Admin
 
 Use your own API keys for the key variables. As baseUrl use "https://localhost:7057/api" or whatever you have defined in launchSettings.json. Both user variables needs a bearer token which can be generated when calling the login requests in auth folder
+
+## OpenAPI
+
+https://localhost:7057/openapi/v1.json

@@ -25,6 +25,7 @@ public class AdminSettingsController : ControllerBase
     [ProducesResponseType(200, Type = typeof(AdminSettings))]
     [ProducesResponseType(401)]
     [ProducesResponseType(403)]
+    [EndpointDescription("Returns admin settings which are used by [GET /api/dashboard] to request data.")]
     public AdminSettings GetStockSymbols()
     {
         return _repository.GetSettings();
@@ -35,6 +36,7 @@ public class AdminSettingsController : ControllerBase
     [ProducesResponseType(400)]
     [ProducesResponseType(401)]
     [ProducesResponseType(403)]
+    [EndpointDescription("Updates stock symbols for which stock data should be requested. See [GET /api/dahsboard] endpoint to get stock data for the new stock symbols.")]
     public ActionResult UpdateStockSymbols([FromBody] IEnumerable<string> stockSymbols)
     {
         if (stockSymbols?.Any() == false)
@@ -53,6 +55,7 @@ public class AdminSettingsController : ControllerBase
     [ProducesResponseType(400)]
     [ProducesResponseType(401)]
     [ProducesResponseType(403)]
+    [EndpointDescription("Updates location for which the weater forecast should be requested. See [GET /api/dahsboard] endpoint to get weather forecast for the new location.")]
     public ActionResult UpdateLocationForWeatherForecast([FromBody] UpdateWeatherLocationRequest location)
     {
         WeatherLocation newLocation = new(location.Latitude, location.Longitude);
