@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MyDemo.WebApi.Auth;
 
-public static class AddAuthExtension
+public static class AuthExtensions
 {
     public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
     {

@@ -4,9 +4,9 @@ using MyDemo.WebApi.Services.WeatherForecast.OpenWeatherMap;
 
 namespace MyDemo.WebApi.Services;
 
-public static class AddServiceExtension
+public static class RequestServicesExtensions
 {
-    public static IServiceCollection AddServices(this IServiceCollection services)
+    public static IServiceCollection AddRequestServices(this IServiceCollection services)
     {
         services.AddHttpClient();
         services.AddScoped<IPortfolioRequestService, TwelveDataRequestService>();

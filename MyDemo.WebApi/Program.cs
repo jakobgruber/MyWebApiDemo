@@ -9,8 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddJwtAuthentication(builder.Configuration);
-builder.Services.AddMyDemoDataContext();
-builder.Services.AddServices();
+builder.Services.AddAdminRepository();
+builder.Services.AddRequestServices();
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
